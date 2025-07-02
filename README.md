@@ -1,23 +1,24 @@
 # My Todo App README
+📝 ToDo App - Proyecto Programación III
+Esta es una aplicación web desarrollada como trabajo práctico para la materia Programación III. Permite crear, visualizar y gestionar tareas asignadas a distintas personas.
 
-- [ ] TODO Replace or update this README with instructions relevant to your application
+🔧 Tecnologías utilizadas
+Java 17+
 
-To start the application in development mode, import it into your IDE and run the `Application` class. 
-You can also start the application from the command line by running: 
+Spring Boot 3
 
-```bash
-./mvnw
-```
+Vaadin 24
 
-To build the application in production mode, run:
+Hibernate / JPA
 
-```bash
-./mvnw -Pproduction package
-```
+PostgreSQL
 
-## Getting Started
+✨ Funcionalidades principales
+Crear, listar y eliminar tareas.
 
-The [Getting Started](https://vaadin.com/docs/latest/getting-started) guide will quickly familiarize you with your new
-My Todo App implementation. You'll learn how to set up your development environment, understand the project 
-structure, and find resources to help you add muscles to your skeleton — transforming it into a fully-featured 
-application.
+Asignar tareas a personas.
+
+Marcar tareas como realizadas.
+
+CRUD de personas.
+
