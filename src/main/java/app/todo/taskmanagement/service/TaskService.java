@@ -36,8 +36,20 @@ public class TaskService {
         taskRepository.saveAndFlush(task);
     }
 
+    public void updateTask(Task task) {
+        taskRepository.saveAndFlush(task);
+    }
+
+    public void deleteTask(Long id) {
+        taskRepository.deleteById(id);
+    }
+
     public List<Task> list(Pageable pageable) {
         return taskRepository.findAllBy(pageable).toList();
+    }
+
+    public Task saveTask(Task task) {
+    return taskRepository.save(task);
     }
 
 }

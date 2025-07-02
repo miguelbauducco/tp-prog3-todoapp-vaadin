@@ -2,6 +2,7 @@ package app.todo.base.ui.view;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
+import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.avatar.AvatarVariant;
 import com.vaadin.flow.component.html.Div;
@@ -16,25 +17,36 @@ import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.Layout;
 import com.vaadin.flow.server.menu.MenuConfiguration;
 import com.vaadin.flow.server.menu.MenuEntry;
+import com.vaadin.flow.theme.lumo.LumoUtility.AlignItems;
+import com.vaadin.flow.theme.lumo.LumoUtility.Display;
+import com.vaadin.flow.theme.lumo.LumoUtility.FontSize;
+import com.vaadin.flow.theme.lumo.LumoUtility.FontWeight;
+import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
+import com.vaadin.flow.theme.lumo.LumoUtility.IconSize;
+import com.vaadin.flow.theme.lumo.LumoUtility.Margin;
+import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
+import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
+
 import jakarta.annotation.security.PermitAll;
 
 import static com.vaadin.flow.theme.lumo.LumoUtility.*;
 
 @Layout
-@PermitAll // When security is enabled, allow all authenticated users
+@PermitAll 
 public final class MainLayout extends AppLayout {
 
-    MainLayout() {
+    public MainLayout() {
         setPrimarySection(Section.DRAWER);
+        addToNavbar(true, new DrawerToggle()); 
         addToDrawer(createHeader(), new Scroller(createSideNav()), createUserMenu());
     }
 
     private Div createHeader() {
-        // TODO Replace with real application logo and name
+
         var appLogo = VaadinIcon.CUBES.create();
         appLogo.addClassNames(TextColor.PRIMARY, IconSize.LARGE);
 
-        var appName = new Span("My Todo App");
+        var appName = new Span("TP Programacion III");
         appName.addClassNames(FontWeight.SEMIBOLD, FontSize.LARGE);
 
         var header = new Div(appLogo, appName);
@@ -58,8 +70,8 @@ public final class MainLayout extends AppLayout {
     }
 
     private Component createUserMenu() {
-        // TODO Replace with real user information and actions
-        var avatar = new Avatar("John Smith");
+
+        var avatar = new Avatar("Miguel Bauducco");
         avatar.addThemeVariants(AvatarVariant.LUMO_XSMALL);
         avatar.addClassNames(Margin.Right.SMALL);
         avatar.setColorIndex(5);
@@ -69,10 +81,10 @@ public final class MainLayout extends AppLayout {
         userMenu.addClassNames(Margin.MEDIUM);
 
         var userMenuItem = userMenu.addItem(avatar);
-        userMenuItem.add("John Smith");
-        userMenuItem.getSubMenu().addItem("View Profile").setEnabled(false);
-        userMenuItem.getSubMenu().addItem("Manage Settings").setEnabled(false);
-        userMenuItem.getSubMenu().addItem("Logout").setEnabled(false);
+        userMenuItem.add("Miguel Bauducco");
+        userMenuItem.getSubMenu().addItem("Ver perfil").setEnabled(false);
+        userMenuItem.getSubMenu().addItem("Configuracion").setEnabled(false);
+        userMenuItem.getSubMenu().addItem("Cerrar sesion").setEnabled(false);
 
         return userMenu;
     }
