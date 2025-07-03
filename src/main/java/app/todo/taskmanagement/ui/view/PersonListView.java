@@ -13,16 +13,18 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-
+import app.todo.base.ui.component.ViewToolbar;
 import app.todo.taskmanagement.domain.Person;
 import app.todo.taskmanagement.service.PersonService;
 import jakarta.annotation.security.PermitAll;
+import app.todo.base.ui.view.MainLayout;
 
-@Route("person-list")
+
+@Route(value = "person-list", layout = MainLayout.class)
 @PageTitle("Lista de usuarios")
 @Menu(order = 0, icon = "vaadin:clipboard-check", title = "Lista de usuarios")
 @PermitAll
-public class PersonListView extends Main {
+public class PersonListView extends VerticalLayout {
     private Person personaActual = new Person();
     private Binder<Person> binder = new BeanValidationBinder<>(Person.class);
 
@@ -36,10 +38,13 @@ public class PersonListView extends Main {
 
     private Grid<Person> personGrid;
     private PersonService personService;
-
+    
     public PersonListView(PersonService personService) {
-        this.personService = personService;
+        
+        ViewToolbar toolbar = new ViewToolbar("Administración de Usuarios");
+        add(toolbar);
 
+        this.personService = personService;
         nombre.setWidthFull();
         dni.setWidthFull();
         apellido.setWidthFull();
