@@ -17,10 +17,11 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    public void createPerson(String apellido, String nombre, String dni) {
+    public void createPerson(String apellido, String nombre, Integer edad, String dni) {
         var person = new Person();
         person.setApellido(apellido);
         person.setNombre(nombre);
+        person.setEdad(edad);
         person.setDni(dni);
         personRepository.saveAndFlush(person);
     }

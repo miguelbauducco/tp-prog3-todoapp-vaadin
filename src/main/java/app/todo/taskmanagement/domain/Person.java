@@ -28,8 +28,19 @@ public class Person extends AbstractEntity<Long> {
     @NotBlank
     private String nombre;
 
+    private Integer edad;
+
     @OneToMany(mappedBy = "person")
     private List<Task> tasks = new LinkedList<>();
+
+    public void setEdad(Integer edad){
+        this.edad=edad;
+    }
+
+    public Integer getEdad()
+    {
+        return edad;
+    }
 
     public void setId(long id){
         this.id=id;

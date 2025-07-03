@@ -29,6 +29,7 @@ public class PersonListView extends Main {
     private TextField apellido = new TextField("Apellido");
     private TextField nombre = new TextField("Nombre");
     private TextField dni = new TextField("DNI");
+    private TextField edad= new TextField("Edad");
 
     private Button edit = new Button("Nuevo");
     private Button save = new Button("Guardar");
@@ -42,6 +43,7 @@ public class PersonListView extends Main {
         nombre.setWidthFull();
         dni.setWidthFull();
         apellido.setWidthFull();
+        edad.setWidthFull();    
 
         binder.bindInstanceFields(this);
 
@@ -75,7 +77,7 @@ public class PersonListView extends Main {
 
 
         VerticalLayout content = new VerticalLayout();
-        content.add(apellido, nombre, dni, buttons);
+        content.add(apellido, nombre,edad, dni, buttons);
 
         personGrid = new Grid<>();
         personGrid.setItems(personService.listAll());
@@ -83,6 +85,7 @@ public class PersonListView extends Main {
         personGrid.addColumn(Person::getApellido).setHeader("Apellido");
         personGrid.addColumn(Person::getNombre).setHeader("Nombre");
         personGrid.addColumn(Person::getDni).setHeader("DNI");
+        personGrid.addColumn(Person::getEdad).setHeader("Edad");
 
         personGrid.addComponentColumn(person -> {
             Button delete = new Button("Eliminar");
